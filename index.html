@@ -6,8 +6,49 @@
     <title>Etch-a-Sketch</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="angled-gradient">
+    <!-- For the popup function -->
+    <!-- <div class="popup" id="popup">
+        <div class="inner-popup">
+            
+        </div>
+    </div> -->
+
+    <div class="header">
+        <img src="images/4808961-200.png" alt="sun icon" class="mode">
+    </div>
+
+    <div class="elements">
+        <div class="left-side">
+            <h1>ETCH-A-SKETCH</h1>
+            <div class="clickable">
+                <div class="colorpickers">
+                    <div class="colorText">
+                        <input type="color" class="colorpicker" id="colorpicker1" value="#ffffff">
+                        Brush Color
+                    </div>
+                    <div class="colorText">
+                        <input type="color" class="colorpicker" id="colorpicker2" value="#ffffff">
+                        Background Color
+                    </div>
+                </div>
+                <div class="functions">
+                    <button id="erase">Erase</button>  
+                    <button id="fill">Fill</button> 
+                </div>
+                <button id="clear">Clear</button>
+                <button id="rainbow">Rainbow!</button>
+                <div class="gridSize">
+                    <div class="gridText">Grid Size:</div>
+                    <input type="range" min="1" max="64" value="33" class="slider" id="myRange">
+                </div>
+            </div>   
+        </div>
+        <div class="right-side"></div>
+    </div>
+
+    <footer class="footer">@Kush Patel 2024</footer>
+
     <script src="script.js"></script>
-    
 </body>
 </html>

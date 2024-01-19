@@ -1,0 +1,158 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: rgb(242,242,242);
+    /*background: linear-gradient(135deg, rgba(242,242,242,1) 89%, rgba(179,88,199,1) 100%);*/
+    color: #333;
+  }
+
+.header {
+  position: fixed;
+  right: 0;
+  
+}
+
+.mode {
+  width: 40px;
+  height: 40px;
+}
+
+.elements {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-side {
+  border: #333;
+  border-width: 4px;
+  border-style: solid;
+  width: 40%;
+  height: 0;
+  padding-bottom: 40%;
+  margin-top: 3%;
+  margin-bottom: 5%;
+}
+
+.clickable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+}
+
+
+.colorpickers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+}
+
+.colorText {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.colorpicker {
+  height: 80px;
+  width: 80px;
+  border: none;
+}
+
+.colorpicker::-webkit-color-swatch {
+  border: none;
+  border-color: #333;
+  border-style: solid;
+}
+
+.colorpicker:hover {
+  transition: transform 0.10s;
+  transform: scale(1.05);
+}
+
+.colorpicker:active {
+  transition: transform 0.10s ease-in-out;
+  transform: scale(0.9);
+}
+
+button {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #565757;
+  transition: background-color 0.3s ease;
+  width: 80%;
+}
+
+button:hover {
+  color: #333;
+  background-color: #c4ccd1;
+}
+
+.functions {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 25px;
+  width: 80%;
+}
+
+.gridSize {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.gridText {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.slider {
+  width: 80%;
+  height: 15px;
+  opacity: 0.75;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+}
+
