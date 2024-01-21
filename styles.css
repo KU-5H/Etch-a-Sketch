@@ -8,10 +8,11 @@ body {
   }
 
 .header {
-  position: fixed;
-  right: 0;
+  position: absolute;
   top: 15px;
+  right: 15px; /* Adjust the right property to move the button to the top-right */
   width: 100px;
+  margin-bottom: 20px; /* Add some margin at the bottom */
 }
 
 .mode {
@@ -94,6 +95,42 @@ h1 {
   transform: scale(0.9);
 }
 
+.erase-checkbox {
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  background-color: #565757;
+  transition: background-color 0.3s ease;
+  width: 70%;
+}
+.erase-checkbox:hover {
+  transition: transform 0.10s;
+  transform: scale(1.05);
+  color: #333;
+  background-color: #c4ccd1;
+}
+
+.erase-checkbox:active {
+  transition: transform 0.03s ease-in-out;
+  transform: scale(1);
+}
+
+.erase-toggle {
+  background-color: #c4ccd1;
+  color: #333;
+}
+
+.erase-checkbox input {
+  display: none;
+}
+
 button {
   display: inline-block;
   padding: 12px 20px;
@@ -117,15 +154,19 @@ button {
   border-style: solid;
   border-color: #333;
   border-width: 1px;
-
 }
 
 button:hover {
+  transition: transform 0.10s;
+  transform: scale(1.05);
   color: #333;
   background-color: #c4ccd1;
 }
 
-
+button:active {
+  transition: transform 0.03s ease-in-out;
+  transform: scale(1);
+}
 
 .functions {
   display: flex;
@@ -166,7 +207,7 @@ button:hover {
 }
 
 .gridProperties:hover {
-  background-color: #333;
+  background-color: #a3a3a3 !important;
 }
 
 .footer {

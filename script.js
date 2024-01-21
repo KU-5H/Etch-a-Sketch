@@ -43,7 +43,7 @@ imageButton.addEventListener('click', () => {
 //To generate a bunch of grids inside the main grid
 const grid = document.querySelector('.right-side');
 
-function generateGrid(g, prevElements=false) {
+function generateGrid(g, prevElements=false, color='') {
 
     const width = (grid.style.width.slice(0,-2) ) / g;
     const height = (grid.style.height.slice(0,-2) ) / g;
@@ -65,6 +65,10 @@ function generateGrid(g, prevElements=false) {
         tempDiv.style.width = width + 'px';
         tempDiv.style.height = height + 'px';
 
+        if (color !== '') {
+            tempDiv.style.backgroundColor = color;
+        }
+
         grid.appendChild(tempDiv);
     }
 
@@ -79,7 +83,7 @@ function prevGenerateGrid(w,h,prevSquares) {
 
     prevSquares.forEach((div) => {
 
-        console.log('runs')
+
 
         div.style.width = w + 'px';
         div.style.height = h + 'px';
@@ -90,11 +94,9 @@ function prevGenerateGrid(w,h,prevSquares) {
 }
 
 //Setup acutal grid colors
-function gridColors(grid) {
-    
+function gridColors(grid, erase = false) {
     const gridSquares = grid.querySelectorAll('.gridProperties');
     let mousePress = false;
-
 
     gridSquares.forEach((div) => {
 
@@ -114,12 +116,13 @@ function gridColors(grid) {
 
         div.addEventListener('mouseover', () => {
 
-            console.log(mousePress)
-
-
-            if(mousePress) {
-                const brushColor = document.querySelector('#colorpicker1').value;
-                div.style.backgroundColor = brushColor;
+            if(!erase) {
+                if(mousePress) {
+                    const brushColor = document.querySelector('#colorpicker1').value;
+                    div.style.backgroundColor = brushColor;
+                }
+            } else if (mousePress) {
+                div.style.backgroundColor = '#ffffff';
             }
         });
     });
@@ -131,6 +134,28 @@ const clear = document.querySelector('#clear');
 clear.addEventListener('click', () => {
     generateGrid(slider.value)
 })
+
+//Eraser Button
+const erase = document.querySelector('#erase');
+const eraseStyle = document.querySelector('.erase-checkbox');
+
+erase.addEventListener('change', () => {
+    if(erase.checked) {
+        gridColors(grid, true)
+        eraseStyle.classList.toggle('erase-toggle');
+    } else {
+        gridColors(grid, false)
+        eraseStyle.classList.toggle('erase-toggle');
+    }
+});
+
+//Fill Button
+const fill = document.querySelector('#fill');
+
+fill.addEventListener('click', () => {
+    const backgroundColor = document.querySelector('#colorpicker2').value;
+    generateGrid(slider.value, false, backgroundColor);
+});
 
 //Dynamic width/height adjustment
 
