@@ -8,7 +8,6 @@ outputLocation.appendChild(output)
 
 slider.oninput = () => {
     output.innerHTML = slider.value + "x" + slider.value;
-    document.querySelector('.right-side').innerHTML = ''
     generateGrid(slider.value);
 };
 
@@ -42,14 +41,23 @@ imageButton.addEventListener('click', () => {
 });
 
 //To generate a bunch of grids inside the main grid
-function generateGrid(g) {
+const grid = document.querySelector('.right-side');
 
-    const grid = document.querySelector('.right-side');
+function generateGrid(g, prevElements=false) {
+
     const width = (grid.style.width.slice(0,-2) ) / g;
     const height = (grid.style.height.slice(0,-2) ) / g;
 
 
     const numberOfSquares = g*g;
+
+    if (prevElements) {
+        const prevSquares = grid.querySelectorAll('.gridProperties');
+        prevGenerateGrid(width,height,prevSquares);
+        return;
+    } else {
+        grid.innerHTML = '';
+    }
 
     for(let i = 0; i < numberOfSquares; i++) {
         const tempDiv = document.createElement('div');
@@ -60,9 +68,69 @@ function generateGrid(g) {
         grid.appendChild(tempDiv);
     }
 
+    gridColors(grid)
+
     return;
 }
 
+function prevGenerateGrid(w,h,prevSquares) {
+
+    grid.innerHTML = ''
+
+    prevSquares.forEach((div) => {
+
+        console.log('runs')
+
+        div.style.width = w + 'px';
+        div.style.height = h + 'px';
+
+        grid.appendChild(div);
+
+    });
+}
+
+//Setup acutal grid colors
+function gridColors(grid) {
+    
+    const gridSquares = grid.querySelectorAll('.gridProperties');
+    let mousePress = false;
+
+
+    gridSquares.forEach((div) => {
+
+        div.style.userSelect = 'none';
+
+        div.addEventListener('mousedown', () => {
+            mousePress = true;
+        });
+
+        div.addEventListener('mouseup', () => {
+            mousePress = false;
+        });
+
+        div.addEventListener('mouseLeave', () => {
+            mousePress = false;
+        })
+
+        div.addEventListener('mouseover', () => {
+
+            console.log(mousePress)
+
+
+            if(mousePress) {
+                const brushColor = document.querySelector('#colorpicker1').value;
+                div.style.backgroundColor = brushColor;
+            }
+        });
+    });
+}
+
+//Clear Button
+const clear = document.querySelector('#clear');
+
+clear.addEventListener('click', () => {
+    generateGrid(slider.value)
+})
 
 //Dynamic width/height adjustment
 
@@ -72,13 +140,16 @@ function dynamicAdjust() {
 
     grid.style.width = dynamicWidth + 'px';
     grid.style.height = dynamicWidth + 'px';
-
-    console.log(dynamicWidth)
-    console.log(window.innerHeight)
-    grid.innerHTML = '';
-    generateGrid(slider.value)
 }
 
-window.addEventListener('resize', () => {dynamicAdjust()});
-window.onload = () => {dynamicAdjust()};
+window.addEventListener('resize', () => {
+    dynamicAdjust()
+    generateGrid(slider.value, true)
+});
+window.onload = () => {
+    dynamicAdjust()
+    generateGrid(slider.value)
+};
+
+
 
