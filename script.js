@@ -41,18 +41,13 @@ imageButton.addEventListener('click', () => {
     }
 });
 
-
 //To generate a bunch of grids inside the main grid
 function generateGrid(g) {
 
     const grid = document.querySelector('.right-side');
-    const width = grid.offsetWidth / g;
-    const height = grid.offsetHeight / g;
+    const width = (grid.style.width.slice(0,-2) ) / g;
+    const height = (grid.style.height.slice(0,-2) ) / g;
 
-    console.log(width);
-    console.log(height);
-
-    const area = width * height;
 
     const numberOfSquares = g*g;
 
@@ -65,9 +60,25 @@ function generateGrid(g) {
         grid.appendChild(tempDiv);
     }
 
-    console.log('this ran');
-
     return;
 }
 
-generateGrid(slider.value)
+
+//Dynamic width/height adjustment
+
+function dynamicAdjust() {
+    const grid = document.querySelector('.right-side');
+    let dynamicWidth = window.innerWidth * 0.4;
+
+    grid.style.width = dynamicWidth + 'px';
+    grid.style.height = dynamicWidth + 'px';
+
+    console.log(dynamicWidth)
+    console.log(window.innerHeight)
+    grid.innerHTML = '';
+    generateGrid(slider.value)
+}
+
+window.addEventListener('resize', () => {dynamicAdjust()});
+window.onload = () => {dynamicAdjust()};
+
