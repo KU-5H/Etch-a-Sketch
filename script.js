@@ -94,7 +94,7 @@ function prevGenerateGrid(w,h,prevSquares) {
 }
 
 //Setup acutal grid colors
-function gridColors(grid, erase = false) {
+function gridColors(grid, erase = false, rainbow = false) {
     const gridSquares = grid.querySelectorAll('.gridProperties');
     let mousePress = false;
 
@@ -118,7 +118,12 @@ function gridColors(grid, erase = false) {
 
             if(!erase) {
                 if(mousePress) {
-                    const brushColor = document.querySelector('#colorpicker1').value;
+                    let brushColor = 0;
+                    if(rainbow) {
+                        brushColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+                    } else {
+                        brushColor = document.querySelector('#colorpicker1').value;
+                    }
                     div.style.backgroundColor = brushColor;
                 }
             } else if (mousePress) {
@@ -128,7 +133,12 @@ function gridColors(grid, erase = false) {
 
         div.addEventListener('click', () => {
             if(!erase) {
-                const brushColor = document.querySelector('#colorpicker1').value;
+                let brushColor = 0;
+                if(rainbow) {
+                    brushColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+                } else {
+                    brushColor = document.querySelector('#colorpicker1').value;
+                }
                 div.style.backgroundColor = brushColor;
             } else {
                 div.style.backgroundColor = '#ffffff';
@@ -141,22 +151,30 @@ function gridColors(grid, erase = false) {
 const clear = document.querySelector('#clear');
 
 clear.addEventListener('click', () => {
+    toggleAll();
     generateGrid(slider.value)
 })
 
 //Eraser Button
 const erase = document.querySelector('#erase');
-const eraseStyle = document.querySelector('.erase-checkbox');
+const eraseStyle = document.querySelector('#erase-checkbox');
 
 erase.addEventListener('change', () => {
     if(erase.checked) {
+        toggleRainbow();
         gridColors(grid, true)
-        eraseStyle.classList.toggle('erase-toggle');
     } else {
         gridColors(grid, false)
-        eraseStyle.classList.toggle('erase-toggle');
     }
+    eraseStyle.classList.toggle('toggle');
 });
+
+function toggleErase() {
+    if(erase.checked) {
+        erase.checked = false;
+        eraseStyle.classList.toggle('toggle');
+    }
+}
 
 //Fill Button
 const fill = document.querySelector('#fill');
@@ -165,6 +183,33 @@ fill.addEventListener('click', () => {
     const backgroundColor = document.querySelector('#colorpicker2').value;
     generateGrid(slider.value, false, backgroundColor);
 });
+
+//Rainbow Button
+const rainbow = document.querySelector('#rainbow');
+const rainbowStyle = document.querySelector('#rainbow-checkbox');
+
+rainbow.addEventListener('change', () => {
+    if(rainbow.checked) {
+        toggleErase();
+        gridColors(grid, false, true)
+    } else {
+        gridColors(grid, false, false);
+    }
+    rainbowStyle.classList.toggle('toggle');
+});
+
+function toggleRainbow() {
+    if(rainbow.checked) {
+        rainbow.checked = false;
+        rainbowStyle.classList.toggle('toggle');
+    }
+}
+
+//Toggle all the toggles
+function toggleAll() {
+    toggleErase();
+    toggleRainbow();
+}
 
 //Dynamic width/height adjustment
 

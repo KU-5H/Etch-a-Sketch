@@ -95,7 +95,7 @@ h1 {
   transform: scale(0.9);
 }
 
-.erase-checkbox {
+.checkbox {
   display: inline-block;
   padding: 12px 20px;
   font-size: 16px;
@@ -110,24 +110,25 @@ h1 {
   transition: background-color 0.3s ease;
   width: 70%;
 }
-.erase-checkbox:hover {
+
+.checkbox:hover {
   transition: transform 0.10s;
   transform: scale(1.05);
   color: #333;
   background-color: #c4ccd1;
 }
 
-.erase-checkbox:active {
+.checkbox:active {
   transition: transform 0.03s ease-in-out;
   transform: scale(1);
 }
 
-.erase-toggle {
+.toggle {
   background-color: #c4ccd1;
   color: #333;
 }
 
-.erase-checkbox input {
+.checkbox input {
   display: none;
 }
 
