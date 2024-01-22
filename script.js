@@ -125,6 +125,15 @@ function gridColors(grid, erase = false) {
                 div.style.backgroundColor = '#ffffff';
             }
         });
+
+        div.addEventListener('click', () => {
+            if(!erase) {
+                const brushColor = document.querySelector('#colorpicker1').value;
+                div.style.backgroundColor = brushColor;
+            } else {
+                div.style.backgroundColor = '#ffffff';
+            }
+        });
     });
 }
 
@@ -171,6 +180,7 @@ window.addEventListener('resize', () => {
     dynamicAdjust()
     generateGrid(slider.value, true)
 });
+
 window.onload = () => {
     dynamicAdjust()
     generateGrid(slider.value)
