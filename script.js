@@ -1,15 +1,23 @@
 //Slider Properties and text generation based on slider range
 const slider = document.querySelector('#myRange');
 const outputLocation = document.querySelector('.gridSize')
-const output = document.createElement('div');
+const output = document.querySelector('.sliderText');
 
 output.innerHTML = slider.value + "x" + slider.value;
-outputLocation.appendChild(output)
+
+function color() {
+    if (imageTick == 1) {
+        return '#ffffff';
+    } else {
+        return '#000000'
+    }
+};
 
 slider.oninput = () => {
     output.innerHTML = slider.value + "x" + slider.value;
-    generateGrid(slider.value);
+    generateGrid(slider.value, false, color())
 };
+
 
 //For the dark mode button
 let imageTick = 1;
@@ -17,12 +25,27 @@ const image = document.querySelector('.mode');
 const imageButton = document.querySelector('.modeButton')
 
 imageButton.addEventListener('click', () => {
+    
     if (imageTick === 0) {
         image.src = 'images/4808961-200.png'
         imageTick = 1;
 
         const lightMode = () => {
+            const body = document.querySelector('body');
+            body.style.backgroundColor = 'rgb(242,242,242)'
+        
+            const header = document.querySelector('h1');
+            header.style.color = '#333'
 
+            document.querySelectorAll('.colorText').forEach((div) => {div.style.color = '#333'})
+            
+            const gridText = document.querySelector('.gridText');
+            gridText.style.color = '#333';
+
+            const sliderText = document.querySelector('.sliderText');
+            sliderText.style.color = '#333';
+
+            generateGrid(slider.value, true)
         }
 
         lightMode()
@@ -33,12 +56,27 @@ imageButton.addEventListener('click', () => {
         imageTick = 0;
 
         const darkMode = () => {
+            const body = document.querySelector('body');
+            body.style.backgroundColor = '#333'
+        
+            const header = document.querySelector('h1');
+            header.style.color = 'rgb(242,242,242)'
 
+            document.querySelectorAll('.colorText').forEach((div) => {div.style.color = 'rgb(242,242,242)'})
+            
+            const gridText = document.querySelector('.gridText');
+            gridText.style.color = 'rgb(242,242,242)';
+
+            const sliderText = document.querySelector('.sliderText');
+            sliderText.style.color = 'rgb(242,242,242)';
+            
+            generateGrid(slider.value, true)
         }
 
         darkMode()
     }
 });
+
 
 //To generate a bunch of grids inside the main grid
 const grid = document.querySelector('.right-side');
@@ -47,7 +85,6 @@ function generateGrid(g, prevElements=false, color='') {
 
     const width = (grid.style.width.slice(0,-2) ) / g;
     const height = (grid.style.height.slice(0,-2) ) / g;
-
 
     const numberOfSquares = g*g;
 
@@ -83,13 +120,22 @@ function prevGenerateGrid(w,h,prevSquares) {
 
     prevSquares.forEach((div) => {
 
-
+        if(div.style.backgroundColor == '') {
+            if (imageTick == 1) {
+                div.style.backgroundColor = 'rgb(255, 255, 255)'
+            } else {
+                div.style.backgroundColor = 'rgb(0, 0, 0)'
+            }
+        } else if (imageTick == 1 && div.style.backgroundColor == 'rgb(0, 0, 0)') {
+            div.style.backgroundColor = 'rgb(255, 255, 255)'
+        } else if (imageTick == 0 && div.style.backgroundColor == 'rgb(255, 255, 255)') {
+            div.style.backgroundColor = 'rgb(0, 0, 0)'
+        }
 
         div.style.width = w + 'px';
         div.style.height = h + 'px';
 
         grid.appendChild(div);
-
     });
 }
 
@@ -233,11 +279,13 @@ function toggleAll() {
     toggleRainbow();
 }
 
+
+
 //Dynamic width/height adjustment
 
 function dynamicAdjust() {
     const grid = document.querySelector('.right-side');
-    let dynamicWidth = window.innerWidth * 0.4;
+    let dynamicWidth = (window.innerWidth * 0.4) -8;
 
     grid.style.width = dynamicWidth + 'px';
     grid.style.height = dynamicWidth + 'px';
