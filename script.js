@@ -49,6 +49,7 @@ imageButton.addEventListener('click', () => {
         }
 
         lightMode()
+        localStorage.setItem('darkMode', 'false');
 
 
     } else {
@@ -74,9 +75,14 @@ imageButton.addEventListener('click', () => {
         }
 
         darkMode()
+        localStorage.setItem('darkMode', 'true');
     }
 });
 
+const darkMode = localStorage.getItem('darkMode');
+if (darkMode == 'true') {
+    imageButton.click();
+}
 
 //To generate a bunch of grids inside the main grid
 const grid = document.querySelector('.right-side');
