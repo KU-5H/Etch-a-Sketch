@@ -304,7 +304,7 @@ window.addEventListener('resize', () => {
 
 window.onload = () => {
     dynamicAdjust()
-    generateGrid(slider.value)
+    generateGrid(slider.value, false, color())
 };
 
 
