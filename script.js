@@ -147,29 +147,22 @@ function prevGenerateGrid(w,h,prevSquares) {
 function gridColors(grid) {
 
     const gridSquares = grid.querySelectorAll('.gridProperties');
-    let mousePress = false;
+    let mousePress1 = false;
+    let mousePress2 = false;
 
     gridSquares.forEach((div) => {
 
         div.style.userSelect = 'none';
 
-        div.addEventListener('mousedown', () => {
-            mousePress = true;
-        });
 
-        div.addEventListener('mouseup', () => {
-            mousePress = false;
-        });
-
-        div.addEventListener('mouseLeave', () => {
-            mousePress = false;
-        })
-
-        div.addEventListener('mouseover', () => {
-            if(mousePress) {
-                div.style.backgroundColor = mouseOver(div.style.backgroundColor)
+        div.addEventListener('mousemove', (temp) => {
+            if(temp.buttons == 1) {
+             temp.preventDefault();
+           
+             // Your code here!
+             div.style.backgroundColor = mouseOver(div.style.backgroundColor)
             }
-        });
+           });
 
         div.addEventListener('click', () => {
             div.style.backgroundColor = clickOver(div.style.backgroundColor)
