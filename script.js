@@ -372,10 +372,6 @@ function dynamicAdjust2() {
 
     const header = document.querySelector('h1');
     header.style.fontSize = Math.max(30 ,(window.innerWidth / 32)) + 'px'
-
-
-
-
 }
 
 
