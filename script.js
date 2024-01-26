@@ -155,7 +155,7 @@ function gridColors(grid) {
         div.style.userSelect = 'none';
 
 
-        div.addEventListener('mousemove', (temp) => {
+        div.addEventListener('mouseover', (temp) => {
             if(temp.buttons == 1) {
              temp.preventDefault();
            
