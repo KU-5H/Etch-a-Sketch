@@ -20,7 +20,7 @@ Website: [Etch-a-Sketch
 # Usage
 Meant to be used as a Sketchpad that people can draw on. The project is entirely available through github pages and dosen't require a download.
 
-###Here's a rundown of each component of the Etch-A-Sketch and How to Use it
+###Here's a rundown of each component of the Etch-A-Sketch and How to Use it###
 - **Canvas:** The canvas is the large white/black square on the right side of the website that you can draw on. Simply click or press and move over the canvas to put color on it.
 - **Brush and Fill Color:** The brush color let's you change the drawing color on the canvas, while the fill color changes what the 'fill' button will do. To change colors, press on the large square beside both names to change colors.
 - **Erase and Clear:** The erase button will erase individual pixels back to the canvas color (white/black). The clear button will wipe the canvas clean back to its canvas color (white/black).
