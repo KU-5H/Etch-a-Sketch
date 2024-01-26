@@ -362,13 +362,32 @@ function dynamicAdjust() {
     grid.style.height = dynamicWidth + 'px';
 }
 
+function dynamicAdjust2() {
+    const colorPicker = document.querySelectorAll('.colorpicker');
+
+    colorPicker.forEach((picker) => {
+        picker.style.width = (window.innerWidth / 24) + 'px';
+        picker.style.height = (window.innerWidth / 24) + 'px';
+    })
+
+    const header = document.querySelector('h1');
+    header.style.fontSize = Math.max(30 ,(window.innerWidth / 32)) + 'px'
+
+
+
+
+}
+
+
 window.addEventListener('resize', () => {
     dynamicAdjust()
+    dynamicAdjust2()
     generateGrid(slider.value, true)
 });
 
 window.onload = () => {
     dynamicAdjust()
+    dynamicAdjust2()
     generateGrid(slider.value, false, color())
 };
 

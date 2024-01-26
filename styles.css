@@ -1,3 +1,8 @@
+.container {
+  width:100%;
+  aspect-ratio:1;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -9,15 +14,16 @@ body {
   }
   
 .header {
-  position: absolute;
+  position: fixed;
   top: 15px;
-  right: 15px; /* Adjust the right property to move the button to the top-right */
+  right: -15px; /* Adjust the right property to move the button to the top-right */
   width: 100px;
-  margin-bottom: 20px; /* Add some margin at the bottom */
 }
 
 h1 {
   transition: all 0.5s ease;
+  text-align: center;
+  font-size: 60px;
 }
 
 .mode {
@@ -38,6 +44,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-width: 400px;
 }
 
 .right-side {
@@ -57,10 +64,7 @@ h1 {
   gap: 25px;
 }
 
-h1 {
-    text-align: center;
-    font-size: 60px;
-}
+
 
 .colorpickers {
   display: flex;
@@ -82,10 +86,13 @@ h1 {
 .colorpicker {
   height: 80px;
   width: 80px;
+  min-width: 40px;
+  min-height: 40px;
   border: none;
   padding: 0;
   transition: all 0.5s ease;
 }
+
 
 .colorpicker::-webkit-color-swatch {
   border: none;
@@ -108,7 +115,7 @@ h1 {
   transform: scale(0.9);
 }
 
-.checkbox {
+.checkbox, button {
   display: inline-block;
   padding: 12px 20px;
   font-size: 16px;
@@ -121,7 +128,12 @@ h1 {
   color: #fff;
   background-color: #565757;
   transition: background-color 0.3s ease;
-  width: 70%;
+  transition: all 0.5s ease;
+  width: 72%;
+}
+
+button {
+  width:80%;
 }
 
 .checkbox:hover {
@@ -143,22 +155,6 @@ h1 {
 
 .checkbox input {
   display: none;
-}
-
-button {
-  display: inline-block;
-  padding: 12px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  background-color: #565757;
-  transition: background-color 0.3s ease;
-  width: 80%;
 }
 
 .header button {
