@@ -4,6 +4,8 @@ A front-end sketchpad made using HTML/CSS/Javascript that let's users draw on a 
 
 ![picture](https://github.com/KU-5H/Etch-a-Sketch/blob/main/images/Screenshot%202024-01-26%20031100.png)
 
+![picture](https://github.com/KU-5H/Etch-a-Sketch/blob/main/images/Screenshot%202024-01-26%20034709.png)
+
 Website: [Etch-a-Sketch
 ](https://ku-5h.github.io/Etch-a-Sketch/)https://ku-5h.github.io/Etch-a-Sketch/
 
