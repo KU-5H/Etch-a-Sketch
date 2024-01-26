@@ -5,10 +5,11 @@ A front-end sketchpad made using HTML/CSS/Javascript that let's users draw on a 
 **Website:** [Etch-a-Sketch
 ](https://ku-5h.github.io/Etch-a-Sketch/)https://ku-5h.github.io/Etch-a-Sketch/
 
-![picture](https://github.com/KU-5H/Etch-a-Sketch/blob/main/images/Screenshot%202024-01-26%20031100.png)
 *Light Mode Illustration at 32x32*
-![picture](https://github.com/KU-5H/Etch-a-Sketch/blob/main/images/Screenshot%202024-01-26%20034709.png)
+![picture](https://github.com/KU-5H/Etch-a-Sketch/blob/main/images/Screenshot%202024-01-26%20031100.png)
+
 *Dark mode Illustration at 16x16*
+![picture](https://github.com/KU-5H/Etch-a-Sketch/blob/main/images/Screenshot%202024-01-26%20034709.png)
 
 <!-- Features -->
 # Features
