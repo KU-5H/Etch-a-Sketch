@@ -17,7 +17,7 @@ A front-end sketchpad made using HTML/CSS/Javascript that let's users draw on a 
 - **Dark Mode:** Allows the user to use the app in dark mode, with the website saving their choices.
 - **Cuztomizable Grid:** Let's the user increase or decrease the size of the 16x16 grid to as little as 1x1 or even as large as 64x64.
 - **Simple Yet Effective Tools:** The brush and fill colors allow the user to draw with multiple colors, with access to the 16,777,216 colors from the RGB color space. Also has toggleable eraser, fill and clear buttons to make the drawing experience more convienent.
-- **Fun Extras:** The Rainbow, Lighten and Darken tools change up the conventional drawing style with more fun tools!
+- **Fun Extras:** The Rainbow, Lighten and Darken tools change up the conventional drawing style bring able to randomize or lighten/darken colors!
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
