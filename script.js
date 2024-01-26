@@ -184,6 +184,8 @@ function mouseOver(div) {
         return "#" + Math.floor(Math.random()*16777215).toString(16);
     } else if (lightenToggle) {
         return lightenColor(div);
+    } else if (darkenToggle) {
+        return darkenColor(div);
     } else {
         return document.querySelector('#colorpicker1').value;
     }
@@ -196,6 +198,8 @@ function clickOver(div) {
         return "#" + Math.floor(Math.random()*16777215).toString(16);
     } else if (lightenToggle) {
         return lightenColor(div);
+    } else if (darkenToggle) {
+        return darkenColor(div);
     } else {
         return document.querySelector('#colorpicker1').value;
     }
@@ -221,6 +225,7 @@ fill.addEventListener('click', () => {
 let eraseToggle = false;
 let rainbowToggle = false;
 let lightenToggle = false;
+let darkenToggle = false;
 
 //Toggle All
 function toggleAll(ignore) {
@@ -236,6 +241,10 @@ function toggleAll(ignore) {
 
     if(ignore != 'r') {
         toggleRainbow();
+    }
+
+    if(ignore != 'd') {
+        toggleDarken();
     }
 }
 
@@ -311,6 +320,34 @@ function toggleLighten() {
         lightenToggle = false;
         lightenStyle.classList.toggle('toggle');
         return
+    }
+}
+
+//Darken Button
+const darken = document.querySelector('#darken');
+const darkenStyle = document.querySelector('#darken-checkbox');
+
+darken.addEventListener('change', () => {
+    if(darken.checked) {
+        toggleAll('d')
+        darkenToggle = true;
+    } else {
+        darkenToggle = false;
+    }
+    darkenStyle.classList.toggle('toggle');
+});
+
+function darkenColor(divColor) {
+    let divArray = divColor.match(/\d+/g).map(Number);
+    divArray = divArray.map(value => Math.max(value - 20, 0));
+    return `rgb(${divArray.join(',')})`
+}
+
+function toggleDarken() {
+    if(darken.checked) {
+        darken.checked = false;
+        darkenToggle = false;
+        darkenStyle.classList.toggle('toggle');
     }
 }
 
